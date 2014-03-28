@@ -4,13 +4,13 @@
  */
  
 
-inherits( Screen, PIXI.DisplayObjectContainer );
+inherits( Page, PIXI.DisplayObjectContainer );
 
 
 /**
  * @constructor
  * @extends PIXI.DisplayObjectContainer
  */
-function Screen(){
-    Screen.super_.apply( this, arguments );
+function Page(){
+    Page.super_.apply( this, arguments );
 }
