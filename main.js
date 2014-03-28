@@ -20,7 +20,7 @@ var center = new PIXI.Point( consts.width / 2, consts.height / 2 ),
     stage = new PIXI.Stage( 0x567686 ),
     renderer = PIXI.autoDetectRenderer( consts.width, consts.height ),
     scale = consts.width / (Object.keys(assets).length + 2) / consts.puzzleWidth,
-    dropRadius = consts.puzzleWidth * scale / 4;
+    dropRadius = consts.puzzleWidth * scale / 3;
 
 document.body.appendChild( renderer.view );
 
@@ -40,7 +40,7 @@ Object.keys( assets ).forEach( function( name, i, array ){
     puzzleAim.anchor.y = 0.5;
     puzzleAim.scale.x = scale;
     puzzleAim.scale.y = scale;
-    puzzleAim.position.x = consts.width / (array.length + 1) * ( i + 0.5 );
+    puzzleAim.position.x = consts.width / ( array.length + 1 ) * ( i + 0.5 );
     puzzleAim.position.y = center.y;
     puzzleAims.push( puzzleAim );
 
@@ -62,7 +62,6 @@ Object.keys( assets ).forEach( function( name, i, array ){
     puzzle.mouseup = puzzle.mouseupoutside = puzzle.touchend = puzzle.touchendoutside = function(){
         this.dragging = false;
         this.data = false;
-        console.log( distance(puzzleAim.position, puzzle.position) );
         if ( distance(puzzleAim.position, puzzle.position) < dropRadius )
             this.position = puzzleAim.position.clone();
         else
