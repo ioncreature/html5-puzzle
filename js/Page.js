@@ -42,3 +42,13 @@ Page.prototype.goTo = function( pageName, pageParam ){
 Page.prototype.goBack = function(){
     this.getGame().goBack();
 };
+
+
+Page.prototype.show = function(){
+    this.visible = true;
+};
+
+
+Page.prototype.hide = function(){
+    this.visible = false;
+};

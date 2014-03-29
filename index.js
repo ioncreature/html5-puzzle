@@ -5,12 +5,14 @@
  
 
 var game = new Game({
-    view: document.body,
     assets: [
         'assets/monkey.png',
         'assets/rabbit.png',
         'assets/rhino.png'
     ],
+    container: document.body,
+    width: window.innerWidth,
+    height: window.innerHeight,
     pages: {
         menu: MenuPage,
         puzzle: PuzzlePage
@@ -20,6 +22,7 @@ var game = new Game({
 
 
 setTimeout( function(){
+    console.log( 'game start' );
     game.start();
 }, 200 );
 

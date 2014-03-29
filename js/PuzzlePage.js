@@ -12,7 +12,7 @@ inherits( PuzzlePage, Page );
  * @extends Page
  */
 function PuzzlePage(){
-    Screen.super_.apply( this, arguments );
+    Page.super_.apply( this, arguments );
 }
 
 
