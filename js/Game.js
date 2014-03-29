@@ -30,8 +30,10 @@ Game.prototype.loadAssets = function( assets ){
 Game.prototype.initPages = function( pages ){
     this.pages = {};
     for ( var k in pages )
-        if ( pages.hasOwnProperty(k) )
+        if ( pages.hasOwnProperty(k) ){
             this.pages[k] = new Page( this );
+            this.pages[k].setGame( this );
+        }
 };
 
 
