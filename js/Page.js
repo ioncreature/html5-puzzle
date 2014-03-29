@@ -4,13 +4,24 @@
  */
  
 
-inherits( Page, PIXI.DisplayObjectContainer );
+inherits( Page, PIXI.SpriteBatch );
 
 
 /**
  * @constructor
- * @extends PIXI.DisplayObjectContainer
+ * @extends PIXI.SpriteBatch
+ * @param {Game} game
  */
-function Page(){
+function Page( game ){
     Page.super_.apply( this, arguments );
 }
+
+
+Page.prototype.setGame = function( game ){
+    this.game = game;
+};
+
+
+Page.prototype.getGame = function(){
+    return this.game;
+};

@@ -4,18 +4,18 @@
  */
  
 
-inherits( PuzzleScreen, Screen );
+inherits( PuzzlePage, Page );
 
 
 /**
  * @constructor
- * @extends Screen
+ * @extends Page
  */
-function PuzzleScreen(){
+function PuzzlePage(){
     Screen.super_.apply( this, arguments );
 }
 
 
-PuzzleScreen.prototype.addPuzzle = function( puzzle ){
+PuzzlePage.prototype.addPuzzle = function( puzzle ){
     this.puzzle = puzzle;
 };
