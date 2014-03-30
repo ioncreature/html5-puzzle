@@ -8,7 +8,9 @@ var game = new Game({
     assets: [
         'assets/monkey.png',
         'assets/rabbit.png',
-        'assets/rhino.png'
+        'assets/rhino.png',
+        'assets/menu-top.png',
+        'assets/menu-right.png'
     ],
     container: document.body,
     width: window.innerWidth,

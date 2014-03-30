@@ -9,10 +9,12 @@
  * @constructor
  */
 function Game( params ){
+    var game = this;
     this.rootPage = params.rootPage;
     this.initView( params.container, params.width, params.height );
-    this.loadAssets( params.assets );
-    this.initPages( params.pages );
+    this.loadAssets( params.assets, function(){
+        game.initPages( params.pages );
+    });
 }
 
 
@@ -28,19 +30,30 @@ Game.prototype.initView = function( container, width, height ){
     this.renderer = PIXI.autoDetectRenderer( width, height );
     this.container.appendChild( this.renderer.view );
     this.renderer.render( this.stage );
+    Object.defineProperties( this, {
+        width: {
+            get: function(){
+                return width;
+            }
+        },
+        height: {
+            get: function(){
+                return height;
+            }
+        }
+    });
 };
 
 
 /**
- * @param assets
+ * @param {Array} assets
+ * @param {Function} callback
  * @private
  */
-Game.prototype.loadAssets = function( assets ){
+Game.prototype.loadAssets = function( assets, callback ){
     this.loaded = false;
     this.loader = new PIXI.AssetLoader( assets );
-    this.loader.onComplete = function(){
-        this.onAssetsLoaded && this.onAssetsLoaded();
-    }.bind( this );
+    this.loader.onComplete = callback;
     this.loader.load();
 };
 
@@ -55,6 +68,9 @@ Game.prototype.initPages = function( pages ){
         if ( pages.hasOwnProperty(k) ){
             this.pages[k] = new pages[k]( this );
             this.pages[k].setGame( this );
+            this.pages[k].initPage();
+            this.stage.addChild( this.pages[k] );
+            this.pages[k].hide();
         }
     this.pageStack = [];
     this.goTo( this.rootPage );
@@ -86,7 +102,7 @@ Game.prototype.goTo = function( pageName ){
     prev && prev.hide();
     this.currentPage = this.pages[pageName];
     this.currentPage.show();
-    this.pageStack.push( this.currentPage )
+    this.pageStack.push( this.currentPage );
 };
 
 
@@ -96,6 +112,7 @@ Game.prototype.goBack = function(){
         var prev = this.pageStack.pop();
         prev.hide();
         this.currentPage = this.pageStack[this.pageStack.length - 1];
+        this.currentPage.show();
     }
 };
 

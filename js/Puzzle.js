@@ -7,7 +7,9 @@
 /**
  * @constructor
  */
-function Puzzle(){
+function Puzzle( width, height ){
+    this.width = width;
+    this.height = height;
     this.parts = [];
 }
 

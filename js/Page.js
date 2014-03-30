@@ -17,6 +17,12 @@ function Page( game ){
 }
 
 
+/**
+ * @override
+ */
+Page.prototype.initPage = function(){};
+
+
 Page.prototype.setGame = function( game ){
     this.game = game;
 };
