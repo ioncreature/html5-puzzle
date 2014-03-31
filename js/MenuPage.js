@@ -7,6 +7,10 @@
 inherits( MenuPage, Page );
 
 
+/**
+ * @constructor
+ * @extends Page
+ */
 function MenuPage(){
     MenuPage.super_.apply( this, arguments );
 }

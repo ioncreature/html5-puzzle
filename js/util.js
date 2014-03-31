@@ -17,7 +17,7 @@ function inherits( ctor, superCtor ){
             writable: true,
             configurable: true
         }
-    } );
+    });
 }
 
 
