@@ -17,24 +17,24 @@ function MenuPage(){
 
 
 MenuPage.prototype.puzzlePreviews = {
-    panda: 'assets/panda.png',
-    owl: 'assets/owl.png',
-    star: 'assets/star.png',
-    panda1: 'assets/panda.png',
-    owl1: 'assets/owl.png',
-    star1: 'assets/star.png',
-    panda2: 'assets/panda.png',
-    owl2: 'assets/owl.png',
-    star2: 'assets/star.png',
-    panda3: 'assets/panda.png',
-    owl3: 'assets/owl.png',
-    star3: 'assets/star.png'
+    panda: 'assets/panda-preview.png',
+    owl: 'assets/owl-preview.png',
+    star: 'assets/star-preview.png',
+    panda1: 'assets/panda-preview.png',
+    owl1: 'assets/owl-preview.png',
+    star1: 'assets/star-preview.png',
+    panda2: 'assets/panda-preview.png',
+    owl2: 'assets/owl-preview.png',
+    star2: 'assets/star-preview.png',
+    panda3: 'assets/panda-preview.png',
+    owl3: 'assets/owl-preview.png',
+    star3: 'assets/star-preview.png'
 };
 
 
 MenuPage.prototype.initPage = function(){
     this.addHeader();
-//    this.addPuzzlePreviews();
+    this.addPuzzlePreviews();
 };
 
 
@@ -75,5 +75,5 @@ MenuPage.prototype.hide = function(){
 MenuPage.prototype.show = function(){
     if ( this.previewContainer )
         this.previewContainer.style.display = 'block';
-    MenuPage.super_.prototype.hide.call( this );
+    MenuPage.super_.prototype.show.call( this );
 };

@@ -11,8 +11,11 @@ var game = new Game({
         'assets/home.png',
         'assets/next.png',
         'assets/star.png',
+        'assets/star-preview.png',
         'assets/panda.png',
-        'assets/owl.png'
+        'assets/panda-preview.png',
+        'assets/owl.png',
+        'assets/owl-preview.png'
     ],
     container: document.body,
     width: window.innerWidth,
