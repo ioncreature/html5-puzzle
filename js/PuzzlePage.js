@@ -18,9 +18,9 @@ function PuzzlePage(){
 
 PuzzlePage.prototype.initPage = function(){
     var game = this.getGame();
-    this.rightMenu = PIXI.Sprite.fromImage( 'assets/menu-right.png' );
+    this.rightMenu = PIXI.Sprite.fromImage( 'assets/sidebar.png' );
     this.addChild( this.rightMenu );
-    var scale = game.width * 0.2 / this.rightMenu.width;
+    var scale = game.width * 0.25 / this.rightMenu.width;
     this.rightMenu.scale.x = scale;
     this.rightMenu.scale.y = scale;
     this.rightMenu.anchor.x = 0.5;

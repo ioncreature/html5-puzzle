@@ -6,11 +6,13 @@
 
 var game = new Game({
     assets: [
-        'assets/monkey.png',
-        'assets/rabbit.png',
-        'assets/rhino.png',
-        'assets/menu-top.png',
-        'assets/menu-right.png'
+        'assets/header.png',
+        'assets/sidebar.png',
+        'assets/home.png',
+        'assets/next.png',
+        'assets/star.png',
+        'assets/panda.png',
+        'assets/owl.png'
     ],
     container: document.body,
     width: window.innerWidth,

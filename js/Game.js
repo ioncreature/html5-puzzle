@@ -5,13 +5,13 @@
 
 
 /**
- * @param {{assets: [string], rootPage: string, pages: Object, container: HTMLElement, width: number, height: number}} params
+ * @param {{assets: [string], rootPage: string, pages: Object, container: HTMLElement, width: number, height: number, background}} params
  * @constructor
  */
 function Game( params ){
     var game = this;
     this.rootPage = params.rootPage;
-    this.initView( params.container, params.width, params.height );
+    this.initView( params.container, params.width, params.height, params.background );
     this.loadAssets( params.assets, function(){
         game.initPages( params.pages );
     });
@@ -22,12 +22,13 @@ function Game( params ){
  * @param {HTMLElement} container
  * @param {number} width
  * @param {number} height
+ * @param {number?} background
  * @private
  */
-Game.prototype.initView = function( container, width, height ){
+Game.prototype.initView = function( container, width, height, background ){
     this.container = container;
-    this.stage = new PIXI.Stage( 0x000000 );
-    this.renderer = PIXI.autoDetectRenderer( width, height );
+    this.stage = new PIXI.Stage( background || 0x000000 );
+    this.renderer = PIXI.autoDetectRenderer( width, height, null, null, background );
     this.container.appendChild( this.renderer.view );
     this.renderer.render( this.stage );
     Object.defineProperties( this, {
@@ -98,6 +99,8 @@ Game.prototype.pause = function(){
  */
 Game.prototype.goTo = function( pageName ){
     this.pageStack = this.pageStack || [];
+    if ( this.currentPage === this.pages[pageName] )
+        return;
     var prev = this.currentPage;
     prev && prev.hide();
     this.currentPage = this.pages[pageName];
@@ -123,5 +126,5 @@ Game.prototype.goBack = function(){
 Game.prototype._newFrame = function(){
     this.update && this.update();
     var page = this.currentPage;
-    page.update && page.update();
+    page && page.update && page.update();
 };
